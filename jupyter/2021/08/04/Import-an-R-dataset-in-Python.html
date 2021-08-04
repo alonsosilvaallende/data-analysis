@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Import an R dataset in Python | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Import an R dataset in Python" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Import an R dataset in Python." />
+<meta property="og:description" content="Import an R dataset in Python." />
+<link rel="canonical" href="https://alonsosilvaallende.github.io/data-analysis/jupyter/2021/08/04/Import-an-R-dataset-in-Python.html" />
+<meta property="og:url" content="https://alonsosilvaallende.github.io/data-analysis/jupyter/2021/08/04/Import-an-R-dataset-in-Python.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:image" content="https://alonsosilvaallende.github.io/data-analysis/images/chart-preview.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-08-04T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2021-08-04T00:00:00-05:00","url":"https://alonsosilvaallende.github.io/data-analysis/jupyter/2021/08/04/Import-an-R-dataset-in-Python.html","@type":"BlogPosting","image":"https://alonsosilvaallende.github.io/data-analysis/images/chart-preview.png","headline":"Import an R dataset in Python","dateModified":"2021-08-04T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://alonsosilvaallende.github.io/data-analysis/jupyter/2021/08/04/Import-an-R-dataset-in-Python.html"},"description":"Import an R dataset in Python.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/data-analysis/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://alonsosilvaallende.github.io/data-analysis/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/data-analysis/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/data-analysis/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/data-analysis/about/">About Me</a><a class="page-link" href="/data-analysis/search/">Search</a><a class="page-link" href="/data-analysis/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Import an R dataset in Python</h1><p class="page-description">Import an R dataset in Python.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-08-04T00:00:00-05:00" itemprop="datePublished">
+        Aug 4, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/data-analysis/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/alonsosilvaallende/data-analysis/tree/master/_notebooks/2021-08-04-Import-an-R-dataset-in-Python.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/data-analysis/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/alonsosilvaallende/data-analysis/master?filepath=_notebooks%2F2021-08-04-Import-an-R-dataset-in-Python.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/data-analysis/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/alonsosilvaallende/data-analysis/blob/master/_notebooks/2021-08-04-Import-an-R-dataset-in-Python.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/data-analysis/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-08-04-Import-an-R-dataset-in-Python.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I recently discovered the <a href="https://vincentarelbundock.github.io/Rdatasets/">Rdatasets project</a> which gives access to the datasets available in R's core datasets package and many other common R packages. There is a nice integration with <a href="https://www.statsmodels.org/devel/datasets/index.html#datasets-index--page-root">The Datasets Package</a>, which is the place where I originally discovered the <a href="https://vincentarelbundock.github.io/Rdatasets/">Rdatasets project</a> (see <a href="https://www.statsmodels.org/devel/datasets/index.html#using-datasets-from-r">here</a>). This is particularly revelant to people like me working on Survival Analysis where R is still predominant.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The list of available datasets can be found <a href="https://vincentarelbundock.github.io/Rdatasets/articles/data.html">here</a> and instructions to add new R datasets can be found <a href="https://vincentarelbundock.github.io/Rdatasets/#adding-data">here</a>. I have made requests to add new datasets from <code>asaur</code> and <code>mstate</code> packages and the maintener, <a href="http://arelbundock.com/">Professor Vincent Arel-Bundock</a>, has responded very quickly (the datasets have been already added).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From the <a href="https://vincentarelbundock.github.io/Rdatasets/articles/data.html">list of available datasets</a>, what's the dataset name (item name) and you need to search from which R package it's coming from.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For example, let's say we want to import the <a href="https://vincentarelbundock.github.io/Rdatasets/doc/asaur/pharmacoSmoking.html">pharmacoSmoking</a> dataset from the <code>asaur</code> package.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will use <a href="https://www.statsmodels.org/devel/datasets/index.html#datasets-index--page-root">The Datasets Package</a> from <a href="https://www.statsmodels.org/stable/">statsmodels</a>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then we need to use the function <code>get_rdataset</code> with the name of the item and the name of the package it's coming from.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pharmacoSmoking</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_rdataset</span><span class="p">(</span><span class="s2">"pharmacoSmoking"</span><span class="p">,</span> <span class="s2">"asaur"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can take a look at the documentation with the <code>__doc__</code> attribute.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pharmacoSmoking</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>=============== ===============
+pharmacoSmoking R Documentation
+=============== ===============
+
+pharmacoSmoking
+---------------
+
+Description
+~~~~~~~~~~~
+
+Randomized trial of triple therapy vs. patch for smoking cessation.
+
+Usage
+~~~~~
+
+::
+
+   data("pharmacoSmoking")
+
+Format
+~~~~~~
+
+A data frame with 125 observations on the following 14 variables.
+
+``id``
+   patient ID number
+
+``ttr``
+   Time in days until relapse
+
+``relapse``
+   Indicator of relapse (return to smoking)
+
+``grp``
+   Randomly assigned treatment group with levels ``combination`` or
+   ``patchOnly``
+
+``age``
+   Age in years at time of randomization
+
+``gender``
+   ``Female`` or ``Male``
+
+``race``
+   ``black``, ``hispanic``, ``white``, or ``other``
+
+``employment``
+   ``ft`` (full-time), ``pt`` (part-time), or ``other``
+
+``yearsSmoking``
+   Number of years the patient had been a smoker
+
+``levelSmoking``
+   ``heavy`` or ``light``
+
+``ageGroup2``
+   Age group with levels ``21-49`` or ``50+``
+
+``ageGroup4``
+   Age group with levels ``21-34``, ``35-49``, ``50-64``, or ``65+``
+
+``priorAttempts``
+   The number of prior attempts to quit smoking
+
+``longestNoSmoke``
+   The longest period of time, in days, that the patient has previously
+   gone without smoking
+
+Source
+~~~~~~
+
+This data is from a clinical trial described in Steinberg et al. (2009)
+
+References
+~~~~~~~~~~
+
+Steinberg, M.B. Greenhaus, S. Schmelzer, A.C. Bover, M.T., Foulds, J.,
+Hoover, D.R., and Carson, J.L. (2009) Triple-combination pharmacotherapy
+for medically ill smokers: A randomized trial. Annals of Internal
+Medicine 150, 447-454.
+
+Examples
+~~~~~~~~
+
+::
+
+   data(pharmacoSmoking)
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And access the data with the <code>data</code> attribute.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pharmacoSmoking</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>ttr</th>
+      <th>relapse</th>
+      <th>grp</th>
+      <th>age</th>
+      <th>gender</th>
+      <th>race</th>
+      <th>employment</th>
+      <th>yearsSmoking</th>
+      <th>levelSmoking</th>
+      <th>ageGroup2</th>
+      <th>ageGroup4</th>
+      <th>priorAttempts</th>
+      <th>longestNoSmoke</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>21</td>
+      <td>182</td>
+      <td>0</td>
+      <td>patchOnly</td>
+      <td>36</td>
+      <td>Male</td>
+      <td>white</td>
+      <td>ft</td>
+      <td>26</td>
+      <td>heavy</td>
+      <td>21-49</td>
+      <td>35-49</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>113</td>
+      <td>14</td>
+      <td>1</td>
+      <td>patchOnly</td>
+      <td>41</td>
+      <td>Male</td>
+      <td>white</td>
+      <td>other</td>
+      <td>27</td>
+      <td>heavy</td>
+      <td>21-49</td>
+      <td>35-49</td>
+      <td>3</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>39</td>
+      <td>5</td>
+      <td>1</td>
+      <td>combination</td>
+      <td>25</td>
+      <td>Female</td>
+      <td>white</td>
+      <td>other</td>
+      <td>12</td>
+      <td>heavy</td>
+      <td>21-49</td>
+      <td>21-34</td>
+      <td>3</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>80</td>
+      <td>16</td>
+      <td>1</td>
+      <td>combination</td>
+      <td>54</td>
+      <td>Male</td>
+      <td>white</td>
+      <td>ft</td>
+      <td>39</td>
+      <td>heavy</td>
+      <td>50+</td>
+      <td>50-64</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>87</td>
+      <td>0</td>
+      <td>1</td>
+      <td>combination</td>
+      <td>45</td>
+      <td>Male</td>
+      <td>white</td>
+      <td>other</td>
+      <td>30</td>
+      <td>heavy</td>
+      <td>21-49</td>
+      <td>35-49</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="alonsosilvaallende/data-analysis"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/data-analysis/jupyter/2021/08/04/Import-an-R-dataset-in-Python.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/data-analysis/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/data-analysis/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/data-analysis/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/data-analysis/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/data-analysis/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
