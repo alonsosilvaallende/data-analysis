@@ -78,7 +78,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      6 min read
     
 </span></p>
 
@@ -180,6 +180,261 @@ window.onload = wrap_img;
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">indicators</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'C0.02'</span><span class="p">:</span><span class="s1">'Country ISO3'</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">wbdata</span><span class="o">.</span><span class="n">get_dataframe</span><span class="p">(</span><span class="n">indicators</span><span class="o">=</span><span class="n">indicators</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>country</th>
+      <th>date</th>
+      <th>Country ISO3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Aruba</td>
+      <td>2019</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Aruba</td>
+      <td>2018</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Afghanistan</td>
+      <td>2019</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Afghanistan</td>
+      <td>2018</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Angola</td>
+      <td>2019</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>437</th>
+      <td>South Africa</td>
+      <td>2018</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>438</th>
+      <td>Zambia</td>
+      <td>2019</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>439</th>
+      <td>Zambia</td>
+      <td>2018</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>440</th>
+      <td>Zimbabwe</td>
+      <td>2019</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>441</th>
+      <td>Zimbabwe</td>
+      <td>2018</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+<p>442 rows × 3 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wbdata</span><span class="o">.</span><span class="n">search_indicators</span><span class="p">(</span><span class="s2">"ISO"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>id                     name
+---------------------  ---------------------------------------------------------------------------------------------------------
+BI.PWK.CMPA.GE.MD      Cross-country public sector pay comparison ratio, by occupation: Government economist (using median)
+BI.PWK.CMPA.GE.SM      Cross-country public sector pay comparison ratio, by occupation: Government economist (using mean)
+BI.PWK.CMPA.HD.MD      Cross-country public sector pay comparison ratio, by occupation: Hospital doctor (using median)
+BI.PWK.CMPA.HD.SM      Cross-country public sector pay comparison ratio, by occupation: Hospital doctor (using mean)
+BI.PWK.CMPA.HN.MD      Cross-country public sector pay comparison ratio, by occupation: Hospital nurse (using median)
+BI.PWK.CMPA.HN.SM      Cross-country public sector pay comparison ratio, by occupation: Hospital nurse (using mean)
+BI.PWK.CMPA.JU.MD      Cross-country public sector pay comparison ratio, by occupation: Judge (using median)
+BI.PWK.CMPA.JU.SM      Cross-country public sector pay comparison ratio, by occupation: Judge (using mean)
+BI.PWK.CMPA.PO.MD      Cross-country public sector pay comparison ratio, by occupation: Police officer (using median)
+BI.PWK.CMPA.PO.SM      Cross-country public sector pay comparison ratio, by occupation: Police officer (using mean)
+BI.PWK.CMPA.PT.MD      Cross-country public sector pay comparison ratio, by occupation: Primary school teacher (using median)
+BI.PWK.CMPA.PT.SM      Cross-country public sector pay comparison ratio, by occupation: Primary school teacher (using mean)
+BI.PWK.CMPA.SN.MD      Cross-country public sector pay comparison ratio, by occupation: Senior official (using median)
+BI.PWK.CMPA.SN.SM      Cross-country public sector pay comparison ratio, by occupation: Senior official (using mean)
+BI.PWK.CMPA.ST.MD      Cross-country public sector pay comparison ratio, by occupation: Secondary school teacher (using median)
+BI.PWK.CMPA.ST.SM      Cross-country public sector pay comparison ratio, by occupation: Secondary school teacher (using mean)
+BI.PWK.CMPA.UT.MD      Cross-country public sector pay comparison ratio, by occupation: University teacher (using median)
+BI.PWK.CMPA.UT.SM      Cross-country public sector pay comparison ratio, by occupation: University teacher (using mean)
+C0.02                  Country ISO3
+FB.INC.INST.FW.CB      001_Does a regulatory/supervisory framework exist for commercial banks?_#VGAA_00
+FB.INC.INST.FW.FC      003_Does a regulatory/supervisory framework exist for financial cooperatives?_#VGAA_02
+FB.INC.INST.FW.MC      005_Does a regulatory/supervisory framework exist for microcredit institutions (MCIs)?_#VGAA_04
+FB.INC.INST.FW.NB      006_Does a regulatory/supervisory framework exist for non-bank e-money issuers (NBEIs)?_#VGAA_05
+FB.INC.INST.FW.OB      002_Does a regulatory/supervisory framework exist for other banks?_#VGAA_01
+FB.INC.INST.FW.OD      004_Does a regulatory/supervisory framework exist for other deposit taking institutions (ODTIs)?_#VGAA_03
+IC.FRM.CRM.CRIME8      Percent of firms identifying crime, theft and disorder as a major constraint
+IC.FRM.OBS.OBST6       Percent of firms choosing crime, theft and disorder as their biggest obstacle
+IN.HLTH.HLTHSTAFF.NUM  Health visitors &amp; Health supervisors
+LO.EGRA.CWPM.AFA.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Afan Oromo. 2nd Grade
+LO.EGRA.CWPM.AFA.3GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Afan Oromo. 3rd Grade
+LO.EGRA.CWPM.AMH.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Amharic. 2nd Grade
+LO.EGRA.CWPM.AMH.3GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Amharic. 3rd Grade
+LO.EGRA.CWPM.ARB.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Arabic. 2nd Grade
+LO.EGRA.CWPM.BMN.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Bamanankan. 2nd Grade
+LO.EGRA.CWPM.BOM.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Bomu. 2nd Grade
+LO.EGRA.CWPM.CHC.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Chichewa. 2nd Grade
+LO.EGRA.CWPM.CHC.4GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Chichewa. 4th Grade
+LO.EGRA.CWPM.ENG.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). English. 2nd Grade
+LO.EGRA.CWPM.ENG.3GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). English. 3rd Grade
+LO.EGRA.CWPM.ENG.4GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). English. 4th Grade
+LO.EGRA.CWPM.ENG.6GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). English. 6th Grade
+LO.EGRA.CWPM.FLF.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Fulfulde. 2nd Grade
+LO.EGRA.CWPM.FLP.3GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Filipino. 3rd Grade
+LO.EGRA.CWPM.HAR.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Hararigna. 2nd Grade
+LO.EGRA.CWPM.HAR.3GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Hararigna. 3rd Grade
+LO.EGRA.CWPM.KIS.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Kiswahili. 2nd Grade
+LO.EGRA.CWPM.KNY.4GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Kinyarwanda. 4th Grade
+LO.EGRA.CWPM.KNY.6GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Kinyarwanda. 6th Grade
+LO.EGRA.CWPM.SID.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Sidaamu Afoo. 2nd Grade
+LO.EGRA.CWPM.SID.3GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Sidaamu Afoo. 3rd Grade
+LO.EGRA.CWPM.SNG.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Songhoi. 2nd Grade
+LO.EGRA.CWPM.SOM.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Somaligna. 2nd Grade
+LO.EGRA.CWPM.SOM.3GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Somaligna. 3rd Grade
+LO.EGRA.CWPM.SPN.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Spanish. 2nd Grade
+LO.EGRA.CWPM.SPN.3GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Spanish. 3rd Grade
+LO.EGRA.CWPM.SPN.4GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Spanish. 4th Grade
+LO.EGRA.CWPM.TIG.2GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Tigrinya. 2nd Grade
+LO.EGRA.CWPM.TIG.3GRD  EGRA: Correct Isolated Words Read Per Minute (Mean). Tigrinya. 3rd Grade
+SH.STA.POIS.P5         Mortality rate attributed to unintentional poisoning (per 100,000 population)
+SH.STA.POIS.P5.FE      Mortality rate attributed to unintentional poisoning, female (per 100,000 female population)
+SH.STA.POIS.P5.MA      Mortality rate attributed to unintentional poisoning, male (per 100,000 male population)
+SPI.D2.3.DSAS          NSO Website - advisory/analytical services</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
